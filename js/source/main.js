@@ -1,11 +1,11 @@
 require.config({
 	paths: {
-		underscore: '../vendor/bower_components/underscore/underscore',
-		backbone: '../vendor/bower_components/backbone/backbone',
-		marionette: '../vendor/bower_components/backbone.marionette/lib/backbone.marionette',
-		text: '../vendor/bower_components/text/text',
-		jquery: '../vendor/jquery',
-		highcharts: '../vendor/bower_components/highcharts/highcharts',
+		underscore: '../../node_modules/underscore/underscore',
+		backbone: '../../node_modules/backbone/backbone',
+		marionette: '../../node_modules/backbone.marionette/lib/backbone.marionette',
+		text: '../../node_modules/requirejs-text/text',
+		jquery: '../../node_modules/jquery/dist/jquery',
+		highcharts: '../../node_modules/highcharts/highcharts',
 	},
 	shim: {
 		underscore: {

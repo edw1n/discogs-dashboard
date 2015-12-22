@@ -10,5 +10,15 @@
     "grunt-sass": "^1.1.0",
     "load-grunt-tasks": "^3.3.0",
     "time-grunt": "^1.2.2"
+  },
+  "dependencies": {
+    "backbone": "^1.2.3",
+    "backbone.marionette": "^2.4.4",
+    "highcharts": "^4.2.1",
+    "jquery": "^2.1.4",
+    "normalize.css": "^3.0.3",
+    "requirejs": "^2.1.22",
+    "requirejs-text": "^2.0.12",
+    "underscore": "^1.8.3"
   }
 }
