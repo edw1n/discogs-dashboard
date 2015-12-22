@@ -22,8 +22,9 @@ define([
 		},
 
 		onSyncAll: function(collection) {
-			var collection = collection === this.collection,
-				data;
+			var data;
+
+			collection = collection === this.collection;
 
 			if (collection) {
 				data = this.collection.filterData(this.options.key);
@@ -55,7 +56,7 @@ define([
 				chartType = this.options.type,
 				chartTitle = this.options.key,
 				chartData = this.model.get('data'),
-				colors = this.getChartColors(),
+				//colors = this.getChartColors(),
 				collection = this.collection;
 
 			this.chart = new Highcharts.Chart({

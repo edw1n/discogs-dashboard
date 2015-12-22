@@ -12,7 +12,7 @@ define([
 
 		dashboard: function() {
 			require(['app/views/dashboard'], function(DashboardView) {
-				app.views.dashboard = new DashboardView();
+				this.views.dashboard = new DashboardView();
 			});
 		}
 	});

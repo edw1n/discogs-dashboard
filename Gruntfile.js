@@ -4,6 +4,16 @@ module.exports = function(grunt) {
 
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
+		jshint: {
+			files: {
+				src: [
+					'./js/source/**/*.js'
+				],
+				options: {
+					jshintrc: './js/.jshintrc'
+				}
+			}
+		},
 		requirejs: {
 			compile: {
 				options: {
@@ -15,8 +25,8 @@ module.exports = function(grunt) {
 					preserveLicenseComments: false,
 					out: './js/build/main.js',
 					paths: {
-						//'jquery': 'empty:',
-						//'highcharts': 'empty:'
+						'jquery': 'empty:',
+						'highcharts': 'empty:'
 					}
 				}
 			}
@@ -57,5 +67,5 @@ module.exports = function(grunt) {
 	require('time-grunt')(grunt);
 
 	// Default task
-	grunt.registerTask('default', ['sass']);
+	grunt.registerTask('default', ['requirejs', 'sass']);
 };

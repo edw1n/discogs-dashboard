@@ -1,10 +1,11 @@
 define([
+	'underscore',
 	'marionette',
 	'app/views/overview',
 	'app/views/collection',
 	'app/views/wantlist',
 	'text!app/templates/dashboard.html'
-], function(Marionette, OverviewView, CollectionView, WantlistView, dashboardTpl) {
+], function(_, Marionette, OverviewView, CollectionView, WantlistView, dashboardTpl) {
 
 	'use strict';
 

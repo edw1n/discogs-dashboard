@@ -65,7 +65,7 @@ define([
 		countByFormat: function() {
 			return this
 				.chain()
-				.countBy(function(model) {;
+				.countBy(function(model) {
 					return model.get('formats')[0].descriptions[0];
 				})
 				.pairs()
