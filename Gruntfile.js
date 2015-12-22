@@ -8,10 +8,7 @@ module.exports = function(grunt) {
 			files: {
 				src: [
 					'./js/source/**/*.js'
-				],
-				options: {
-					jshintrc: './js/.jshintrc'
-				}
+				]
 			}
 		},
 		requirejs: {
