@@ -15,8 +15,8 @@ module.exports = function(grunt) {
 					preserveLicenseComments: false,
 					out: './js/build/main.js',
 					paths: {
-						'jquery': 'empty:',
-						'highcharts': 'empty:'
+						//'jquery': 'empty:',
+						//'highcharts': 'empty:'
 					}
 				}
 			}
