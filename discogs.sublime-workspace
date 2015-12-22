@@ -1,0 +1,524 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"chart",
+				"chartContainer"
+			],
+			[
+				"region",
+				"region"
+			],
+			[
+				"Chart",
+				"ChartTpl"
+			],
+			[
+				"fon",
+				"font-size-h4"
+			],
+			[
+				"align-",
+				"align-items"
+			],
+			[
+				"c-s",
+				"c-section	Section Comment"
+			],
+			[
+				"c-",
+				"c-section	Section Comment"
+			],
+			[
+				"c",
+				"c-section	Section Comment"
+			],
+			[
+				"donut",
+				"donut-circumfence"
+			],
+			[
+				"donu",
+				"donut-stroke-width"
+			],
+			[
+				"ac",
+				"activeRating"
+			],
+			[
+				"don",
+				"donut-stroke-width"
+			],
+			[
+				"dis",
+				"distance-xl"
+			],
+			[
+				"s",
+				"selectedRating"
+			],
+			[
+				"sele",
+				"selectedRating"
+			],
+			[
+				"border",
+				"border"
+			],
+			[
+				"alig",
+				"align-self"
+			],
+			[
+				"bubble",
+				"bubble-right"
+			],
+			[
+				"Search",
+				"searchController"
+			],
+			[
+				"font-s",
+				"font-style"
+			],
+			[
+				"marg",
+				"margin-bottom"
+			],
+			[
+				"font-famil",
+				"font-family-sans-serif"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 239.0,
+		"last_filter": "install",
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 417.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/Edwin/Sites/discogs/public",
+		"/Users/Edwin/Sites/discogs/public/css",
+		"/Users/Edwin/Sites/discogs/public/grunt",
+		"/Users/Edwin/Sites/discogs/public/js",
+		"/Users/Edwin/Sites/discogs/public/js/source",
+		"/Users/Edwin/Sites/discogs/public/js/source/app",
+		"/Users/Edwin/Sites/discogs/public/js/source/app/routers",
+		"/Users/Edwin/Sites/discogs/public/js/source/app/views"
+	],
+	"file_history":
+	[
+		"/Users/Edwin/Sites/discogs/public/js/source/app/routers/router.js",
+		"/Users/Edwin/Sites/discogs/public/js/source/app/views/chart.js",
+		"/Users/Edwin/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/Edwin/Sites/discogs/public/js/source/main.js",
+		"/Users/Edwin/Sites/discogs/public/js/source/app/views/region.js",
+		"/Users/Edwin/Sites/discogs/public/js/source/app/views/dashboard.js",
+		"/Users/Edwin/Sites/discogs/public/js/source/app/app.js",
+		"/Users/Edwin/Sites/discogs/public/index.html",
+		"/Users/Edwin/Sites/discogs/public/js/vendor/bower.json",
+		"/Users/Edwin/Projects/blckbstr/bower.json",
+		"/Users/Edwin/Sites/discogs/public/js/main.js",
+		"/Users/Edwin/Sites/discogs/public/js/views/dashboard.js",
+		"/Users/Edwin/Sites/discogs/public/js/routers/router.js",
+		"/Users/Edwin/Sites/discogs/public/js/views/chart.js",
+		"/Users/Edwin/Sites/discogs/public/js/routers/app.js",
+		"/Users/Edwin/Sites/discogs/public/js/app.js",
+		"/Users/Edwin/Sites/discogs/public/grunt/package.json",
+		"/Users/Edwin/Sites/discogs/public/grunt/Gruntfile.js",
+		"/Users/Edwin/Sites/discogs/public/css/scss/main.scss",
+		"/Users/Edwin/Sites/discogs/public/css/main.css",
+		"/Users/Edwin/Sites/discogs/public/css/scss/base/_grid.scss",
+		"/Users/Edwin/Sites/discogs/public/js/views/region.js",
+		"/Users/Edwin/Sites/discogs/public/css/main.css.map",
+		"/Users/Edwin/Sites/discogs/public/js/templates/chart.html",
+		"/Users/Edwin/Sites/discogs/public/test/main.js",
+		"/Users/Edwin/Sites/discogs/public/test/index.html",
+		"/Users/Edwin/Sites/discogs/public/js/templates/app.js",
+		"/Users/Edwin/Sites/discogs/public/js/templates/templates.js",
+		"/Users/Edwin/Projects/blckbstr/app/scripts/movie/movie.html",
+		"/Users/Edwin/Projects/blckbstr/app/styles/_variables.scss",
+		"/Users/Edwin/Projects/blckbstr/app/styles/components/_movie.scss",
+		"/Users/Edwin/Projects/blckbstr/app/styles/components/_box.scss",
+		"/Users/Edwin/Projects/blckbstr/app/scripts/widgets/search.directive.js",
+		"/Users/Edwin/Projects/blckbstr/app/scripts/widgets/search.directive.html",
+		"/Users/Edwin/Projects/blckbstr/app/scripts/movie/movie.js",
+		"/Users/Edwin/Projects/blckbstr/app/styles/components/_fluid-video.scss",
+		"/Users/Edwin/Projects/blckbstr/app/styles/components/_button.scss",
+		"/Users/Edwin/Projects/blckbstr/app/scripts/movie/config.route.js",
+		"/Users/Edwin/Projects/blckbstr/app/styles/mixins/_center-content.scss",
+		"/Users/Edwin/Projects/blckbstr/Gruntfile.js",
+		"/Users/Edwin/Projects/blckbstr/node_modules/grunt/lib/util/task.js",
+		"/Users/Edwin/Projects/blckbstr/app/scripts/blocks/router/routehelper.js",
+		"/Users/Edwin/Projects/blckbstr/app/styles/base/_animate.scss",
+		"/Users/Edwin/Projects/blckbstr/app/styles/base/_layout.scss",
+		"/Users/Edwin/Projects/blckbstr/app/styles/base/_typography.scss",
+		"/Users/Edwin/Projects/blckbstr/app/styles/base/_utility.scss",
+		"/Users/Edwin/Projects/blckbstr/app/styles/components/_credits.scss",
+		"/Users/Edwin/Projects/blckbstr/app/styles/components/_list.scss",
+		"/Users/Edwin/Projects/blckbstr/app/styles/mixins/_placeholder.scss",
+		"/Users/Edwin/Projects/blckbstr/app/styles/mixins/_typography.scss",
+		"/Users/Edwin/Projects/blckbstr/app/styles/components/_logo.scss",
+		"/Users/Edwin/Projects/blckbstr/app/styles/components/_search-box.scss",
+		"/Users/Edwin/Projects/blckbstr/app/styles/components/_still.scss",
+		"/Users/Edwin/Projects/blckbstr/app/styles/components/_rating-donut.scss",
+		"/Users/Edwin/Projects/blckbstr/app/styles/components/_rating-list.scss",
+		"/Users/Edwin/Projects/blckbstr/app/styles/components/_rating-circle.scss",
+		"/Users/Edwin/Projects/blckbstr/app/styles/base/_flexgrid.scss",
+		"/Users/Edwin/Projects/blckbstr/app/scripts/home/home.html",
+		"/Users/Edwin/Projects/blckbstr/app/index.html",
+		"/Users/Edwin/blckbstr",
+		"/Users/Edwin/Projects/blckbstr/app/scripts/movie/movie.module.js",
+		"/Users/Edwin/Projects/blckbstr/app/scripts/core/constants.js",
+		"/Users/Edwin/Projects/blckbstr/app/styles/main.scss",
+		"/Users/Edwin/Projects/blckbstr/bower_components/normalize.scss/_normalize.scss",
+		"/Users/Edwin/Projects/blckbstr/app/styles/components/_buttons.scss",
+		"/Users/Edwin/Projects/blckbstr/app/styles/components/_rating.scss",
+		"/Users/Edwin/Projects/blckbstr/app/assets/stylesheets/components/_movie.scss",
+		"/Users/Edwin/Projects/blckbstr/app/assets/stylesheets/_animate-variables.scss",
+		"/Users/Edwin/Projects/blckbstr/app/assets/javascripts/app/home/config.route.js.erb",
+		"/Users/Edwin/Projects/blckbstr/app/assets/stylesheets/_bootstrap-variables.scss",
+		"/Users/Edwin/Projects/blckbstr/app/views/layouts/application.html.haml",
+		"/Users/Edwin/Projects/blckbstr/app/views/home/index.html.haml",
+		"/Users/Edwin/Projects/blckbstr/app/assets/javascripts/app/widgets/search.directive.js.erb",
+		"/Users/Edwin/Projects/blckbstr/app/assets/javascripts/application.js",
+		"/Users/Edwin/Projects/blckbstr/app/assets/javascripts/app/widgets/widgets.module.js.erb",
+		"/Users/Edwin/Projects/blckbstr/app/assets/stylesheets/mixins/_typography.scss",
+		"/Users/Edwin/Projects/blckbstr/app/assets/stylesheets/components/_rating.scss",
+		"/Users/Edwin/Projects/blckbstr/app/assets/stylesheets/components/_logo.scss",
+		"/Users/Edwin/Projects/blckbstr/app/assets/stylesheets/components/_box.scss",
+		"/Users/Edwin/Projects/blckbstr/app/assets/javascripts/app/home/home.html.haml",
+		"/Users/Edwin/Projects/blckbstr/app/assets/stylesheets/base/_layout.scss",
+		"/Users/Edwin/Projects/blckbstr/app/assets/stylesheets/components/_buttons.scss",
+		"/Users/Edwin/Projects/blckbstr/app/assets/stylesheets/components/_fluid-video.scss",
+		"/Users/Edwin/Projects/blckbstr/app/assets/javascripts/app/movie/movie.js.erb",
+		"/Users/Edwin/Projects/blckbstr/app/assets/javascripts/app/widgets/search.directive.html.haml",
+		"/Users/Edwin/Projects/blckbstr/app/assets/stylesheets/components/_search-box.scss",
+		"/Users/Edwin/Projects/blckbstr/config/routes.rb",
+		"/Users/Edwin/Projects/blckbstr/app/assets/javascripts/app/movie/movie.module.js.erb",
+		"/Users/Edwin/Projects/blckbstr/README.md",
+		"/Users/Edwin/Projects/blckbstr/app/assets/javascripts/app/movie/config.route.js.erb",
+		"/Users/Edwin/Projects/blckbstr/app/assets/javascripts/app/blocks/router/routehelper.js.erb",
+		"/Users/Edwin/Projects/blckbstr/app/assets/javascripts/app/home/home.js.erb",
+		"/Users/Edwin/Projects/blckbstr/app/assets/javascripts/app/app.module.js.erb",
+		"/Users/Edwin/Projects/dotfiles/.gitconfig",
+		"/Users/Edwin/Projects/blckbstr/app/assets/stylesheets/components/_backdrop.scss",
+		"/Users/Edwin/Projects/blckbstr/app/assets/javascripts/app/core/dataservice.js.erb",
+		"/Users/Edwin/Projects/blckbstr/config/database.yml",
+		"/Users/Edwin/Projects/blckbstr/app/assets/stylesheets/components/_forms.scss",
+		"/Users/Edwin/Projects/blckbstr/app/assets/stylesheets/base/_base.scss",
+		"/Users/Edwin/Projects/blckbstr/app/assets/stylesheets/_bootstrap-em.scss",
+		"/Users/Edwin/Projects/blckbstr/app/assets/stylesheets/application.scss",
+		"/Users/Edwin/Projects/blckbstr/app/assets/stylesheets/_bootstrap-custom.scss",
+		"/Users/Edwin/Sites/kluswebsite/sass/components/_button.scss",
+		"/Users/Edwin/Projects/blckbstr/app/assets/stylesheets/mixins/_placeholder.scss",
+		"/Users/Edwin/Projects/blckbstr/app/assets/javascripts/app/components/search.directive.html.haml",
+		"/Users/Edwin/Projects/blckbstr/blckbstr.sublime-project",
+		"/Users/Edwin/Projects/blckbstr/config/initializers/assets.rb",
+		"/Users/Edwin/Projects/blckbstr/app/assets/stylesheets/base/_variables.scss",
+		"/Users/Edwin/Projects/blckbstr/Gemfile",
+		"/Users/Edwin/Sites/kluswebsite/sass/mixins/_typography.scss",
+		"/Users/Edwin/Sites/kluswebsite/sass/base/_typography.scss",
+		"/Users/Edwin/Projects/blckbstr/app/assets/stylesheets/components/_search-bar.scss",
+		"/Users/Edwin/Projects/blckbstr/config/application.yml",
+		"/Users/Edwin/Projects/blckbstr/config/secrets.yml",
+		"/Users/Edwin/Projects/blckbstr/app/controllers/home_controller.rb",
+		"/Users/Edwin/Projects/blckbstr/app/assets/javascripts/app/components/search.directive.js.erb",
+		"/Users/Edwin/Projects/blckbstr/app/assets/stylesheets/application.css.scss",
+		"/Users/Edwin/Downloads/kluswebsite/sass/styles.scss",
+		"/Users/Edwin/Projects/blckbstr/app/assets/javascripts/app/app.js.erb",
+		"/Users/Edwin/Projects/blckbstr/app/assets/stylesheets/application.css",
+		"/Users/Edwin/Downloads/kluswebsite/sass/base/_layout.scss",
+		"/Users/Edwin/Projects/blckbstr/lib/assets/stylesheets/test.scss",
+		"/Users/Edwin/Downloads/kluswebsite/config.rb",
+		"/Users/Edwin/Downloads/kluswebsite/sass/mixins/_vertical-align.scss",
+		"/Users/Edwin/Projects/blckbstr/app/assets/javascripts/app/components/search.directive.html",
+		"/Users/Edwin/Projects/blckbstr/app/assets/javascripts/app/app.js",
+		"/Users/Edwin/Projects/blckbstr/app/assets/javascripts/app/app.module.js",
+		"/Users/Edwin/Projects/blckbstr/vendor/assets/bower.json"
+	],
+	"find":
+	{
+		"height": 54.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"/Users/Edwin/Projects/blckbstr/app",
+			"/Users/Edwin/Projects/blckbstr",
+			"/Users/Edwin/Projects/blckbstr/app",
+			"/Users/Edwin/Projects/blckbstr/app/scripts",
+			"/Users/Edwin/Projects/blckbstr/app",
+			"/Users/Edwin/Projects/blckbstr/app/scripts",
+			"/Users/Edwin/Projects/blckbstr/app",
+			"/Users/Edwin/Projects/blckbstr/app/styles",
+			"/Users/Edwin/Projects/blckbstr/app/assets",
+			"/Users/Edwin/Projects/blckbstr/app/assets/javascripts",
+			"/Users/Edwin/Projects/blckbstr/app/assets/stylesheets",
+			"/Users/Edwin/Projects/blckbstr",
+			"/Users/Edwin/Projects/blckbstr/app/assets/stylesheets",
+			"/Users/Edwin/Projects/blckbstr/app",
+			"/Users/Edwin/Projects/blckbstr/app/assets/javascripts/app",
+			"/Users/Edwin/Projects/blckbstr/app",
+			"/Users/Edwin/Projects/blckbstr/app/assets/javascripts",
+			"/Users/Edwin/Projects/blckbstr",
+			"/Users/Edwin/Projects/blckbstr/app",
+			"/Users/Edwin/Projects/blckbstr",
+			"/Users/Edwin/Projects/blckbstr/app/assets/stylesheets",
+			"/Users/Edwin/Projects/blckbstr/app",
+			"/Users/Edwin/Projects/blckbstr"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"getElementsByClassName",
+			"appRegion",
+			"applayoutv",
+			"RegionTwoLayoutView",
+			"layout.",
+			"layout",
+			"\"",
+			"line",
+			"value",
+			"h2",
+			"h4",
+			"awards",
+			"award",
+			"awards",
+			"logo",
+			"fluid",
+			"jshint",
+			"newer",
+			"jshint:all",
+			"jshint",
+			"ignore",
+			"node_m",
+			"jshint",
+			"director",
+			"directors",
+			"scope",
+			"trailer",
+			"ful",
+			"trail",
+			"yout",
+			"otherwise",
+			"rungtime",
+			"img",
+			"director",
+			"img",
+			"items",
+			"grid-siz",
+			"ng-re",
+			"vm.",
+			"getad",
+			"slug",
+			"route",
+			"release",
+			"view",
+			"show",
+			".off",
+			"get-col-p",
+			"grid-base",
+			"radius",
+			"img",
+			"normalize",
+			"mar",
+			"padd",
+			"btn b",
+			"btn-",
+			".btn",
+			"btn-",
+			"box-",
+			"box-b",
+			"box-",
+			"pull",
+			"/\n",
+			"radius",
+			";\n",
+			"@",
+			"background",
+			"subtitle",
+			"5",
+			"widgets.module",
+			"widgets",
+			"gutter",
+			"white",
+			"gutter",
+			"15px",
+			"1px",
+			"gem 'letterboxd-scraper'",
+			"routes.rb",
+			"routes",
+			"fadein",
+			"option",
+			"vm",
+			"body",
+			"haml",
+			"ba",
+			"search-box",
+			"gutter",
+			"font-wei",
+			"gutter",
+			"'",
+			"2px",
+			"black",
+			"primary",
+			"watch",
+			"koen",
+			"jquery",
+			"'",
+			"\""
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"",
+			"btn--",
+			"box--",
+			"$"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "discogs.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 334.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

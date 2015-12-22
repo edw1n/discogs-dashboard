@@ -1,0 +1,32 @@
+/* ==========================================================================
+   Release
+   ========================================================================== */
+
+
+.release {
+	@extend %unstyled;
+	@include clearfix;
+
+	padding: $distance-l 0;
+
+	border-bottom: $border-s solid $black;
+
+	&__image {
+		float: left;
+
+		margin-right: $distance-l;
+		width: 90px;
+		height: 90px;
+	}
+
+	&__title {
+		display: inline-block;
+		margin: 0;
+	}
+
+	&__artist {
+		margin-top: $distance-xs;
+
+		color: $gray;
+	}
+}

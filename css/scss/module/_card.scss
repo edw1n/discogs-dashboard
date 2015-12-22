@@ -1,0 +1,40 @@
+/* ==========================================================================
+   Card
+   ========================================================================== */
+
+
+.card {
+	margin-top: $distance;
+	padding: $distance;
+
+	border-radius: $radius-m;
+
+	&__title {
+		margin: 0;
+
+		color: rgba($white, 0.7);
+
+		font-size: 16px;
+		text-transform: uppercase;
+	}
+
+	&__subtitle {
+		font-size: 64px;
+	}
+
+	&--blue {
+		background: $blue;
+	}
+
+	&--red {
+		background: $red;
+	}
+
+	&--orange {
+		background: $orange;
+	}
+
+	&--green {
+		background: $green;
+	}
+}

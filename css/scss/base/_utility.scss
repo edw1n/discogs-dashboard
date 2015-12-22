@@ -1,0 +1,131 @@
+/* ==========================================================================
+   Text alignment
+   ========================================================================== */
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+/* ==========================================================================
+   Typography
+   ========================================================================== */
+
+.bold {
+  font-weight: bold;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.lowercase {
+  text-transform: lowercase;
+}
+
+/* ==========================================================================
+   Floats
+   ========================================================================== */
+
+.f-left {
+  float: left;
+}
+
+.f-right {
+  float: right;
+}
+
+/* ==========================================================================
+   Common helpers
+   ========================================================================== */
+
+/* Clearfix: contain floats */
+
+.clearfix {
+  @include clearfix;
+}
+
+/* Hide visually and from screen readers */
+
+.hidden {
+  display: none !important;
+}
+
+/*
+ * Hide only visually, but have it available for screen readers:
+ * http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ */
+
+.visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+/*
+ * Hide visually and from screen readers, but maintain layout
+ */
+
+.invisible {
+  visibility: hidden;
+}
+
+/* ==========================================================================
+    Responsive grid helpers
+   ========================================================================== */
+
+// @each $breakpoint, $value in $fg-breakpoints {
+
+//   // Create 'visible' class for each breakpoint
+//   .visible-#{$breakpoint} {
+//     display: none;
+
+//     @include respond-to($breakpoint) {
+//       display: block;
+
+//       // Display grid columns as flex items
+//       &[class^="col-"] {
+//         display: flex;
+//       }
+//     }
+//   }
+
+//   // Create 'hidden' class for each breakpoint
+//   .hidden-#{$breakpoint} {
+//     @include respond-to($breakpoint) {
+//       display: none;
+//     }
+//   }
+// }
+
+/* ==========================================================================
+    Grid helpers
+   ========================================================================== */
+
+.no-padding {
+  padding: 0;
+}
+
+.no-margin {
+  margin: 0;
+}
