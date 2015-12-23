@@ -37,18 +37,27 @@ module.exports = function(grunt) {
 				ext: '.css'
 			}
 		},
+		sasslint: {
+			options: {
+				configFile: './css/scss/.sass-lint.yml',
+				files: {
+					ignore: ['./css/scss/vendor/**/*.*']
+				}
+			},
+			target: ['./css/scss/**/*.scss']
+		},
 		watch: {
 			js: {
 				files:  './js/source/**/*.js',
-				tasks: ['requirejs'],
-				options:  {
+				tasks: ['requirejs', 'jshint'],
+				options: {
 					livereload: true,
 					spawn: false
 				}
 			},
 			sass: {
 				files: './css/scss/**/*.scss',
-				tasks: ['sass'],
+				tasks: ['sass', 'sasslint'],
 				options: {
 					livereload: true,
 					spawn: false
