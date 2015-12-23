@@ -1,13 +1,8 @@
-/* ==========================================================================
-   Mixins
-   ========================================================================== */
-
-
 // Provides an easy way to include a clearfix for containing floats
 @mixin clearfix {
 	&::after {
 		clear: both;
-		content: '';
 		display: table;
+		content: '';
 	}
 }
