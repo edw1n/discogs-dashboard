@@ -36,6 +36,4 @@ require([
 
 	// Start app!
 	app.start();
-
-	window.app = app;
 });

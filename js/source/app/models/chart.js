@@ -7,8 +7,6 @@ define([
 
 	return Backbone.Model.extend({
 
-		//url: '//api.discogs.com/users/edw1n/collection/folders/0/releases?per_page=100',
-
 		defaults: {
 			'type': 'line',
 			'data': null
@@ -92,7 +90,7 @@ define([
 
 				return {
 					'data': chartData
-				}
+				};
 			}
 		}
 	});

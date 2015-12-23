@@ -17,6 +17,8 @@ define([
 			// Return collection data from localStorage if available
 			if (data) {
 				this.setDataFromLocalStorage(data);
+
+				// Start polling for new data!
 				this.pollData();
 
 				return;
@@ -65,7 +67,7 @@ define([
 		countByFormat: function() {
 			return this
 				.chain()
-				.countBy(function(model) {;
+				.countBy(function(model) {
 					return model.get('formats')[0].descriptions[0];
 				})
 				.pairs()

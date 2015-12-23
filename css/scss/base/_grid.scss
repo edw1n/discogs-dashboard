@@ -12,8 +12,8 @@ $media-queries:					true !default;
 $media-query-free-breakpoint:	medium !default;
 $breakpoints:					(mobile: 0, small: 37.5em, medium: 60em, large: 71.25em) !default; // 0, 600px, 960px, 1140px
 
-$grid-class:					"row" !default;
-$grid-item-class:				"col" !default;
+$grid-class:					'row' !default;
+$grid-item-class:				'col' !default;
 
 
 /* Grid classes
@@ -30,20 +30,21 @@ $grid-item-class:				"col" !default;
 	@include clearfix;
 
 	position: relative;
+	margin: 0 (-$grid-gutter / 2); // Always have a negative margin to enable proper alignment
 	padding: 0;
-	margin: 0 (-$grid-gutter/2); // Always have a negative margin to enable proper alignment
 	list-style: none;
 }
 
 .#{$grid-item-class},
-[class^="#{$grid-item-class}-"] {
-	box-sizing: border-box;
+[class^='#{$grid-item-class}-'] {
 	position: relative;
 	float: left;
+
+	box-sizing: border-box;
 	width: 100%; // Mobile first
 	min-height: 1px; // Prevent from collapsing when empty
 	margin: 0;
-	padding: 0 $grid-gutter/2;
+	padding: 0 $grid-gutter / 2;
 }
 
 /* Media Query mixin
@@ -57,8 +58,7 @@ $grid-item-class:				"col" !default;
 		@media only screen and (min-width: $min-width) {
 			@content;
 		}
-	}
-	@else if $min-width <= $media-query-free-breakpoint {
+	} @else if $min-width <= $media-query-free-breakpoint {
 		@content;
 	}
 }
@@ -70,13 +70,11 @@ $grid-item-class:				"col" !default;
 	// It's already a number
 	@if type-of($break) == number {
 		$value: $break;
-	}
 	// Get the value from the breakpoints map
-	@else if type-of($break) == string and map-has-key($breakpoints, $break) {
+	} @else if type-of($break) == string and map-has-key($breakpoints, $break) {
 		$value: map-get($breakpoints, $break);
-	}
-	@else {
-		@warn "Invalid $break parameter passed to @function convert-breakpoint(). Expected: valid map key or number value. Actual value: #{$break}";
+	} @else {
+		@warn 'Invalid $break parameter passed to @function convert-breakpoint(). Expected: valid map key or number value. Actual value: #{$break}';
 	}
 
 	@return $value;
@@ -134,8 +132,8 @@ $grid-item-class:				"col" !default;
 	 ========================================================================== */
 
 @mixin calc-grid-column($column, $break-class, $type, $is-mobile) {
-	$type-class: if($type == width, "-", "-#{$type}-");
-	$break-class: if($is-mobile, "", "-#{$break-class}"); // On mobile don't prefix with MQ name
+	$type-class: if($type == width, '-', '-#{$type}-');
+	$break-class: if($is-mobile, '', '-#{$break-class}'); // On mobile don't prefix with MQ name
 
 	.#{$grid-item-class}#{$break-class}#{$type-class}#{$column} {
 		@if $type == width {
@@ -147,7 +145,7 @@ $grid-item-class:				"col" !default;
 		} @else if $type == offset {
 			margin-left: if($column == 0, 0, percentage(($column / $grid-columns)));
 		} @else {
-			@warn "Invalid $type parameter passed to @mixin calc-grid-column().\nExpected: width, push, pull, offset\nActual: #{$type}";
+			@warn 'Invalid $type parameter passed to @mixin calc-grid-column().\nExpected: width, push, pull, offset\nActual: #{$type}';
 		}
 	}
 }
@@ -156,4 +154,4 @@ $grid-item-class:				"col" !default;
 /* And finally create the grid!
 	 ========================================================================== */
 
-@include create-grid();
+@include create-grid;

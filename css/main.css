@@ -4,7 +4,7 @@
  * 2. Prevent iOS and IE text size adjust after device orientation change,
  *    without disabling user zoom.
  */
-@import url(https://fonts.googleapis.com/css?family=Lobster|Roboto);
+@import url("https://fonts.googleapis.com/css?family=Lobster|Roboto");
 html {
   font-family: sans-serif;
   /* 1 */
@@ -354,20 +354,11 @@ td,
 th {
   padding: 0; }
 
-/* ==========================================================================
-   Mixins
-   ========================================================================== */
-/* ==========================================================================
-   Silent classes
-   ========================================================================== */
 .release {
   margin: 0;
   padding: 0;
   list-style: none; }
 
-/* ==========================================================================
-   Text alignment
-   ========================================================================== */
 .text-left {
   text-align: left; }
 
@@ -380,9 +371,6 @@ th {
 .text-justify {
   text-align: justify; }
 
-/* ==========================================================================
-   Typography
-   ========================================================================== */
 .bold {
   font-weight: bold; }
 
@@ -395,71 +383,39 @@ th {
 .lowercase {
   text-transform: lowercase; }
 
-/* ==========================================================================
-   Floats
-   ========================================================================== */
 .f-left {
   float: left; }
 
 .f-right {
   float: right; }
 
-/* ==========================================================================
-   Common helpers
-   ========================================================================== */
-/* Clearfix: contain floats */
 .clearfix::after {
   clear: both;
-  content: '';
-  display: table; }
+  display: table;
+  content: ''; }
 
-/* Hide visually and from screen readers */
 .hidden {
-  display: none !important; }
+  display: none; }
 
-/*
- * Hide only visually, but have it available for screen readers:
- * http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
- */
 .visuallyhidden {
-  border: 0;
-  clip: rect(0 0 0 0);
+  position: absolute;
+  overflow: hidden;
+  width: 1px;
   height: 1px;
   margin: -1px;
-  overflow: hidden;
   padding: 0;
-  position: absolute;
-  width: 1px; }
+  border: none;
+  clip: rect(0 0 0 0); }
 
-/*
- * Hide visually and from screen readers, but maintain layout
- */
 .invisible {
   visibility: hidden; }
 
-/* ==========================================================================
-    Responsive grid helpers
-   ========================================================================== */
-/* ==========================================================================
-    Grid helpers
-   ========================================================================== */
 .no-padding {
   padding: 0; }
 
 .no-margin {
   margin: 0; }
 
-/* ==========================================================================
-   Variables
-   ========================================================================== */
-/* Grid
-   ========================================================================== */
-/* Colors
-   ========================================================================== */
-/* Spaces
-   ========================================================================== */
-/* Borders & Border radius
-   ========================================================================== */
 /* Variables - Overwrite these in variables.scss
 	 ========================================================================== */
 /* Grid classes
@@ -472,19 +428,19 @@ th {
 
 .row {
   position: relative;
-  padding: 0;
   margin: 0 -0.5em;
+  padding: 0;
   list-style: none; }
   .row::after {
     clear: both;
-    content: '';
-    display: table; }
+    display: table;
+    content: ''; }
 
 .col,
-[class^="col-"] {
-  box-sizing: border-box;
+[class^='col-'] {
   position: relative;
   float: left;
+  box-sizing: border-box;
   width: 100%;
   min-height: 1px;
   margin: 0;
@@ -620,36 +576,24 @@ body {
   font-family: 'Roboto', sans-serif;
   background: #252730; }
 
-/* ==========================================================================
-   Typography
-   ========================================================================== */
-/* ==========================================================================
-   Footer
-   ========================================================================== */
-/* ==========================================================================
-   Header
-   ========================================================================== */
 .header {
   padding: 12px;
   background: #111; }
   .header h1 {
     font-family: 'Lobster', cursive; }
 
-/* ==========================================================================
-   Release
-   ========================================================================== */
 .release {
   padding: 24px 0;
   border-bottom: 1px solid #111; }
   .release::after {
     clear: both;
-    content: '';
-    display: table; }
+    display: table;
+    content: ''; }
   .release__image {
     float: left;
-    margin-right: 24px;
     width: 90px;
-    height: 90px; }
+    height: 90px;
+    margin-right: 24px; }
   .release__title {
     display: inline-block;
     margin: 0; }
@@ -657,16 +601,13 @@ body {
     margin-top: 3px;
     color: #737373; }
 
-/* ==========================================================================
-   Card
-   ========================================================================== */
 .card {
   margin-top: 12px;
   padding: 12px;
   border-radius: 2px; }
   .card__title {
     margin: 0;
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.5);
     font-size: 16px;
     text-transform: uppercase; }
   .card__subtitle {
@@ -680,9 +621,6 @@ body {
   .card--green {
     background: #1bc981; }
 
-/* ==========================================================================
-   Panel
-   ========================================================================== */
 .panel {
   margin-top: 12px; }
   .panel__header {
@@ -706,7 +644,7 @@ body {
       border: 1px solid #fff;
       border-right: none;
       border-left: none;
-      transform: translateY(-50%);
-      content: ''; }
+      content: '';
+      transform: translateY(-50%); }
   .panel__body {
     padding: 12px; }

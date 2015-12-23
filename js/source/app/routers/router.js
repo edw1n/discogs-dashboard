@@ -6,14 +6,17 @@ define([
 	'use strict';
 
 	return Marionette.AppRouter.extend({
+
+		views: {},
+
 		routes : {
 			'' : 'dashboard'
 		},
 
 		dashboard: function() {
-			require(['app/views/dashboard'], function(DashboardView) {
-				app.views.dashboard = new DashboardView();
-			});
+			require(['app/views/dashboard'], _.bind(function(DashboardView) {
+				this.views.dashboard = new DashboardView();
+			}, this));
 		}
 	});
 });

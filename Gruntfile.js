@@ -4,6 +4,13 @@ module.exports = function(grunt) {
 
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
+		jshint: {
+			files: {
+				src: [
+					'./js/source/**/*.js'
+				]
+			}
+		},
 		requirejs: {
 			compile: {
 				options: {
@@ -15,8 +22,8 @@ module.exports = function(grunt) {
 					preserveLicenseComments: false,
 					out: './js/build/main.js',
 					paths: {
-						//'jquery': 'empty:',
-						//'highcharts': 'empty:'
+						'jquery': 'empty:',
+						'highcharts': 'empty:'
 					}
 				}
 			}
@@ -30,18 +37,27 @@ module.exports = function(grunt) {
 				ext: '.css'
 			}
 		},
+		sasslint: {
+			options: {
+				configFile: './css/scss/.sass-lint.yml',
+				files: {
+					ignore: ['./css/scss/vendor/**/*.*']
+				}
+			},
+			target: ['./css/scss/**/*.scss']
+		},
 		watch: {
 			js: {
 				files:  './js/source/**/*.js',
-				tasks: ['requirejs'],
-				options:  {
+				tasks: ['requirejs', 'jshint'],
+				options: {
 					livereload: true,
 					spawn: false
 				}
 			},
 			sass: {
 				files: './css/scss/**/*.scss',
-				tasks: ['sass'],
+				tasks: ['sass', 'sasslint'],
 				options: {
 					livereload: true,
 					spawn: false
@@ -57,5 +73,5 @@ module.exports = function(grunt) {
 	require('time-grunt')(grunt);
 
 	// Default task
-	grunt.registerTask('default', ['sass']);
+	grunt.registerTask('default', ['requirejs', 'sass']);
 };
