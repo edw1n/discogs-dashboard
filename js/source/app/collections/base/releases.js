@@ -17,6 +17,8 @@ define([
 			// Return collection data from localStorage if available
 			if (data) {
 				this.setDataFromLocalStorage(data);
+
+				// Start polling for new data!
 				this.pollData();
 
 				return;
