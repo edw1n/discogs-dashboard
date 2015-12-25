@@ -16,9 +16,9 @@ define([
 		collection: new WantlistCollection(),
 
 		regions: {
-			artistsChart: '.artists-chart',
-			formatsChart: '.formats-chart',
-			yearChart: '.year-chart'
+			artistsChart: '.chart--artists',
+			formatsChart: '.chart--formats',
+			yearChart: '.chart--year'
 		},
 
 		onRender: function() {

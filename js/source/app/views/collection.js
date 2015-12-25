@@ -16,28 +16,11 @@ define([
 
 		collection: new CollectionCollection(),
 
-		events: {
-			'click button': 'onButtonClick'
-		},
-
 		regions: {
-			artistsChart: '.artists-chart',
-			formatsChart: '.formats-chart',
-			yearChart: '.year-chart',
+			artistsChart: '.chart--artists',
+			formatsChart: '.chart--formats',
+			yearChart: '.chart--year',
 			collectionTable: '.collection-table'
-		},
-
-		onButtonClick: function() {
-			this.collection.add({
-				title: 'Test',
-				artists: [{
-					name: 'Test'
-				}],
-				formats: [{
-					descriptions: ['Vinyl']
-				}],
-				year: 2014
-			});
 		},
 
 		onRender: function() {

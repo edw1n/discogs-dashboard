@@ -582,25 +582,6 @@ body {
   .header h1 {
     font-family: 'Lobster', cursive; }
 
-.release {
-  padding: 24px 0;
-  border-bottom: 1px solid #111; }
-  .release::after {
-    clear: both;
-    display: table;
-    content: ''; }
-  .release__image {
-    float: left;
-    width: 90px;
-    height: 90px;
-    margin-right: 24px; }
-  .release__title {
-    display: inline-block;
-    margin: 0; }
-  .release__artist {
-    margin-top: 3px;
-    color: #737373; }
-
 .card {
   margin-top: 12px;
   padding: 12px;
@@ -621,8 +602,39 @@ body {
   .card--green {
     background: #1bc981; }
 
+.chart {
+  min-height: 100px; }
+
+.release {
+  padding: 24px 0;
+  border-bottom: 1px solid #111; }
+  .release::after {
+    clear: both;
+    display: table;
+    content: ''; }
+  .release__image {
+    float: left;
+    width: 90px;
+    height: 90px;
+    margin-right: 24px; }
+  .release__title {
+    display: inline-block;
+    margin: 0; }
+  .release__artist {
+    margin-top: 3px;
+    color: #737373; }
+
+.load-mask {
+  position: absolute;
+  top: 0;
+  right: 0.5em;
+  bottom: 0;
+  left: 0.5em;
+  display: none;
+  background: rgba(17, 17, 17, 0.5) url("/img/ajax-loader.gif") no-repeat center; }
+
 .panel {
-  margin-top: 12px; }
+  margin: 12px 0; }
   .panel__header {
     position: relative;
     overflow: hidden;
@@ -647,4 +659,4 @@ body {
       content: '';
       transform: translateY(-50%); }
   .panel__body {
-    padding: 12px; }
+    min-height: 100px; }

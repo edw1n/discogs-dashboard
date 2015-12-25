@@ -4,8 +4,9 @@ define([
 	'highcharts',
 	'app/utils/eventbus',
 	'app/models/chart',
-	'text!app/templates/chart.html'
-], function(_, Marionette, Highcharts, EventBus, ChartModel, ChartTpl) {
+	'app/views/loadMask',
+	'text!app/templates/chart.html',
+], function(_, Marionette, Highcharts, EventBus, ChartModel, LoadMaskView, ChartTpl) {
 
 	'use strict';
 
@@ -19,14 +20,17 @@ define([
 
 		onRender: function() {
 			this.listenTo(EventBus, 'collection:syncAll wantlist:syncAll', this.onSyncAll);
+
+			this.loadMask = new LoadMaskView({
+				el: this.el,
+				collection: this.collection
+			});
 		},
 
 		onSyncAll: function(collection) {
 			var data;
 
-			collection = collection === this.collection;
-
-			if (collection) {
+			if (collection === this.collection) {
 				data = this.collection.filterData(this.options.key);
 
 				// Only render chart when not rendered yet, or when data is updated

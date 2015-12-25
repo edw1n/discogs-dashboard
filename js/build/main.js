@@ -8141,6 +8141,47 @@ define('app/models/chart',[
 	});
 });
 
+define('text!app/templates/loadMask.html',[],function () { return '<div class="load-mask"></div>';});
+
+define('app/views/loadMask',[
+	'underscore',
+	'backbone',
+	'app/utils/eventbus',
+	'text!app/templates/loadMask.html'
+], function(_, Backbone, EventBus, LoadMaskTpl) {
+
+	'use strict';
+
+	return Backbone.View.extend({
+
+		template: _.template(LoadMaskTpl),
+
+		initialize: function() {
+			this.listenTo(this.collection, 'request', this.show);
+			this.listenTo(EventBus, 'collection:syncAll wantlist:syncAll', this.hide);
+
+			// Create loading mask
+			this.createMask();
+		},
+
+		createMask: function() {
+			this.el.innerHTML += this.template();
+
+			this.mask = this.el.querySelector('.load-mask');
+		},
+
+		show: function() {
+			this.mask.style.display = 'block';
+		},
+
+		hide: function() {
+			this.mask.style.display = 'none';
+		}
+
+	});
+});
+
+
 define('text!app/templates/chart.html',[],function () { return '<div class="chart-container"></div>';});
 
 define('app/views/chart',[
@@ -8149,8 +8190,9 @@ define('app/views/chart',[
 	'highcharts',
 	'app/utils/eventbus',
 	'app/models/chart',
-	'text!app/templates/chart.html'
-], function(_, Marionette, Highcharts, EventBus, ChartModel, ChartTpl) {
+	'app/views/loadMask',
+	'text!app/templates/chart.html',
+], function(_, Marionette, Highcharts, EventBus, ChartModel, LoadMaskView, ChartTpl) {
 
 	'use strict';
 
@@ -8164,14 +8206,17 @@ define('app/views/chart',[
 
 		onRender: function() {
 			this.listenTo(EventBus, 'collection:syncAll wantlist:syncAll', this.onSyncAll);
+
+			this.loadMask = new LoadMaskView({
+				el: this.el,
+				collection: this.collection
+			});
 		},
 
 		onSyncAll: function(collection) {
 			var data;
 
-			collection = collection === this.collection;
-
-			if (collection) {
+			if (collection === this.collection) {
 				data = this.collection.filterData(this.options.key);
 
 				// Only render chart when not rendered yet, or when data is updated
@@ -8332,7 +8377,7 @@ define('app/views/table',[
 	});
 });
 
-define('text!app/templates/collection.html',[],function () { return '<div class="panel">\n\t<div class="panel__header">\n\t\t<h1>Collection</h1>\n\t</div>\n\t<div class="panel__body">\n\t\t<div class="row">\n\t\t\t<div class="col-4">\n\t\t\t\t<div class="artists-chart"></div>\n\t\t\t</div>\n\t\t\t<div class="col-4">\n\t\t\t\t<div class="formats-chart"></div>\n\t\t\t</div>\n\t\t\t<div class="col-4">\n\t\t\t\t<div class="year-chart"></div>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class="row">\n\t\t\t<div class="col">\n\t\t\t\t<div class="collection-table"></div>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>';});
+define('text!app/templates/collection.html',[],function () { return '<div class="panel">\n\t<div class="panel__header">\n\t\t<h1>Collection</h1>\n\t</div>\n\t<div class="panel__body">\n\t\t<div class="row">\n\t\t\t<div class="col-4">\n\t\t\t\t<div class="chart chart--artists"></div>\n\t\t\t</div>\n\t\t\t<div class="col-4">\n\t\t\t\t<div class="chart chart--formats"></div>\n\t\t\t</div>\n\t\t\t<div class="col-4">\n\t\t\t\t<div class="chart chart--year"></div>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class="row">\n\t\t\t<div class="col">\n\t\t\t\t<div class="collection-table"></div>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>';});
 
 define('app/views/collection',[
 	'underscore',
@@ -8352,28 +8397,11 @@ define('app/views/collection',[
 
 		collection: new CollectionCollection(),
 
-		events: {
-			'click button': 'onButtonClick'
-		},
-
 		regions: {
-			artistsChart: '.artists-chart',
-			formatsChart: '.formats-chart',
-			yearChart: '.year-chart',
+			artistsChart: '.chart--artists',
+			formatsChart: '.chart--formats',
+			yearChart: '.chart--year',
 			collectionTable: '.collection-table'
-		},
-
-		onButtonClick: function() {
-			this.collection.add({
-				title: 'Test',
-				artists: [{
-					name: 'Test'
-				}],
-				formats: [{
-					descriptions: ['Vinyl']
-				}],
-				year: 2014
-			});
 		},
 
 		onRender: function() {
@@ -8457,7 +8485,7 @@ define('app/collections/wantlist',[
 	});
 });
 
-define('text!app/templates/wantlist.html',[],function () { return '<div class="panel">\n\t<div class="panel__header">\n\t\t<h1>Wantlist</h1>\n\t</div>\n\t<div class="panel__body">\n\t\t<div class="row">\n\t\t\t<div class="col-4">\n\t\t\t\t<div class="artists-chart"></div>\n\t\t\t</div>\n\t\t\t<div class="col-4">\n\t\t\t\t<div class="year-chart"></div>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>';});
+define('text!app/templates/wantlist.html',[],function () { return '<div class="panel">\n\t<div class="panel__header">\n\t\t<h1>Wantlist</h1>\n\t</div>\n\t<div class="panel__body">\n\t\t<div class="row">\n\t\t\t<div class="col-4">\n\t\t\t\t<div class="chart chart--artists"></div>\n\t\t\t</div>\n\t\t\t<div class="col-4">\n\t\t\t\t<div class="chart chart--year"></div>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>';});
 
 define('app/views/wantlist',[
 	'underscore',
@@ -8477,9 +8505,9 @@ define('app/views/wantlist',[
 		collection: new WantlistCollection(),
 
 		regions: {
-			artistsChart: '.artists-chart',
-			formatsChart: '.formats-chart',
-			yearChart: '.year-chart'
+			artistsChart: '.chart--artists',
+			formatsChart: '.chart--formats',
+			yearChart: '.chart--year'
 		},
 
 		onRender: function() {
