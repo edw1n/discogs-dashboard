@@ -1,5 +1,5 @@
 .panel {
-	margin-top: $distance;
+	margin: $distance 0;
 
 	&__header {
 		position: relative;
@@ -40,6 +40,6 @@
 	}
 
 	&__body {
-	padding: $distance;
+		min-height: 100px;
 	}
 }
