@@ -1,0 +1,11 @@
+.load-mask {
+	position: absolute;
+	top: 0;
+	right: ($grid-gutter / 2);
+	bottom: 0;
+	left: ($grid-gutter / 2);
+
+	display: none;
+
+	background: $black-transparent url('/img/ajax-loader.gif') no-repeat center;
+}
