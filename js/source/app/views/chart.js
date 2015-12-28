@@ -37,7 +37,9 @@ define([
 				if (!_.isEqual(data, this.model.get('data'))) {
 					this.model.set('data', data);
 
-					this.renderChart();
+					// TODO: make this better!!
+					window.setTimeout(_.bind(this.renderChart, this), 10);
+					//this.renderChart();
 				}
 			}
 		},

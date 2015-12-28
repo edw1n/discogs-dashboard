@@ -20,6 +20,7 @@ define([
 		},
 
 		createMask: function() {
+			// Append loading template to el
 			this.el.innerHTML += this.template();
 
 			this.mask = this.el.querySelector('.load-mask');

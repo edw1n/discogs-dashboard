@@ -8165,6 +8165,7 @@ define('app/views/loadMask',[
 		},
 
 		createMask: function() {
+			// Append loading template to el
 			this.el.innerHTML += this.template();
 
 			this.mask = this.el.querySelector('.load-mask');
@@ -8223,7 +8224,9 @@ define('app/views/chart',[
 				if (!_.isEqual(data, this.model.get('data'))) {
 					this.model.set('data', data);
 
-					this.renderChart();
+					// TODO: make this better!!
+					window.setTimeout(_.bind(this.renderChart, this), 10);
+					//this.renderChart();
 				}
 			}
 		},
@@ -8313,6 +8316,7 @@ define('app/views/chart',[
 		}
 	});
 });
+
 
 define('text!app/templates/tableItem.html',[],function () { return '<img class="release__image" src="<%= thumb %>" alt="">\n<h2 class="release__title"><%= title %></h2> <span class="release__year">(<%= formats[0].descriptions[0] %>)</span>\n<h3 class="release__artist"><%= artists[0].name %></h3>\n<span class="release__year"><%= year %></span>';});
 
