@@ -359,6 +359,11 @@ th {
   padding: 0;
   list-style: none; }
 
+.load-mask:before {
+  align-items: center;
+  justify-content: center;
+  display: flex; }
+
 .text-left {
   text-align: left; }
 
@@ -631,7 +636,18 @@ body {
   bottom: 0;
   left: 0.5em;
   display: none;
-  background: rgba(17, 17, 17, 0.5) url("../img/ajax-loader.gif") no-repeat center; }
+  overflow: hidden;
+  background: rgba(17, 17, 17, 0.5); }
+  .load-mask:before {
+    height: 100%;
+    content: url("../img/loader.png");
+    animation: spin 1s linear infinite; }
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg); } }
 
 .panel {
   margin: 12px 0; }

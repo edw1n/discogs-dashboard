@@ -6,6 +6,28 @@
 	left: ($grid-gutter / 2);
 
 	display: none;
+	overflow: hidden;
 
-	background: $black-transparent url('../img/ajax-loader.gif') no-repeat center;
+	background: $black-transparent;
+
+	&:before {
+		@extend %center-content;
+
+		height: 100%;
+
+		content: url('../img/loader.png');
+
+		animation: spin 1s linear infinite;
+	}
+}
+
+// Keyframes for spinning the vinyl loader
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+
+	to {
+		transform: rotate(360deg);
+	}
 }
