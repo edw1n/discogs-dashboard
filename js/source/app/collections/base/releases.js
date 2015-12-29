@@ -30,10 +30,16 @@ define([
 			this.currentPage = 1;
 		},
 
+		comparator: function(model) {
+			return [model.get('year'), model.get('title')];
+		},
+
 		pollData: function() {
+			var interval = 60 * 1000;
+
 			this.currentPage = Math.ceil(this.length / 100);
 
-			setInterval(_.bind(this.fetchData, this, this.currentPage), 20000);
+			setInterval(_.bind(this.fetchData, this, this.currentPage), interval);
 		},
 
 		setDataFromLocalStorage: function(data) {
@@ -85,6 +91,9 @@ define([
 					return (model.get(key)[0] && model.get(key)[0].name) || model.get(key);
 				})
 				.pairs()
+				.filter(function(data) {
+					return data[0] !== '0';
+				})
 				.sortBy(1)
 				.reverse()
 				.slice(0, 10)
