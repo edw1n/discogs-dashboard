@@ -7912,10 +7912,16 @@ define('app/collections/base/releases',[
 			this.currentPage = 1;
 		},
 
+		comparator: function(model) {
+			return [model.get('year'), model.get('title')];
+		},
+
 		pollData: function() {
+			var interval = 60 * 1000;
+
 			this.currentPage = Math.ceil(this.length / 100);
 
-			setInterval(_.bind(this.fetchData, this, this.currentPage), 20000);
+			setInterval(_.bind(this.fetchData, this, this.currentPage), interval);
 		},
 
 		setDataFromLocalStorage: function(data) {
@@ -7967,6 +7973,9 @@ define('app/collections/base/releases',[
 					return (model.get(key)[0] && model.get(key)[0].name) || model.get(key);
 				})
 				.pairs()
+				.filter(function(data) {
+					return data[0] !== '0';
+				})
 				.sortBy(1)
 				.reverse()
 				.slice(0, 10)
@@ -8318,7 +8327,7 @@ define('app/views/chart',[
 });
 
 
-define('text!app/templates/tableItem.html',[],function () { return '<img class="release__image" src="<%= thumb %>" alt="">\n<h2 class="release__title"><%= title %></h2> <span class="release__year">(<%= formats[0].descriptions[0] %>)</span>\n<h3 class="release__artist"><%= artists[0].name %></h3>\n<span class="release__year"><%= year %></span>';});
+define('text!app/templates/tableItem.html',[],function () { return '<img class="release__image" src="<%= thumb %>" alt="">\n<h2 class="release__title"><%= title %></h2> <span class="release__year"></span>\n<h3 class="release__artist"><%= artists[0].name %></h3>\n<span class="release__year">\n\t<% if (year === 0) { %>\n\t\t&mdash;\n\t<% } else { %>\n\t\t<%= year %>\n\t<% } %>\n</span>';});
 
 define('app/views/tableItem',[
 	'underscore',
@@ -8369,19 +8378,42 @@ define('app/views/table',[
 		},
 
 		filter: function(model) {
-			var key;
-			if (!this.filterData) {
+			var filterData = this.filterData,
+				key;
+
+			if (!filterData) {
 				return;
 			}
 
-			key = (model.get(this.filterData.key)[0] && model.get(this.filterData.key)[0].name) || model.get(this.filterData.key);
+			// TODO: refactor this!
+			if (filterData.key === 'title') {
+				var data =  this.collection
+					.chain()
+					.filter(function(model) {
+						return model.get('artists')[0].name === filterData.value;
+					})
+					.uniq(function(model) {
+						return model.get('artists')[0].name + model.get('title');
+					})
+					.map(function(model) {
+						return model.get('id');
+					})
+					.value();
 
-			return key.toString() === this.filterData.value;
+				return _.find(data, function(id) {
+					return id === model.get('id');
+				});
+			}
+
+			key = (model.get(filterData.key)[0] && model.get(filterData.key)[0].name) || model.get(filterData.key);
+
+			return key.toString() === filterData.value;
 		}
 	});
 });
 
-define('text!app/templates/collection.html',[],function () { return '<div class="panel">\n\t<div class="panel__header">\n\t\t<h1>Collection</h1>\n\t</div>\n\t<div class="panel__body">\n\t\t<div class="row">\n\t\t\t<div class="col-4">\n\t\t\t\t<div class="chart chart--artists"></div>\n\t\t\t</div>\n\t\t\t<div class="col-4">\n\t\t\t\t<div class="chart chart--formats"></div>\n\t\t\t</div>\n\t\t\t<div class="col-4">\n\t\t\t\t<div class="chart chart--year"></div>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class="row">\n\t\t\t<div class="col">\n\t\t\t\t<div class="collection-table"></div>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>';});
+
+define('text!app/templates/collection.html',[],function () { return '<div class="panel">\n\t<div class="panel__header">\n\t\t<h1>Collection</h1>\n\t</div>\n\t<div class="panel__body">\n\t\t<div class="row">\n\t\t\t<div class="col-4">\n\t\t\t\t<div class="chart chart--artists"></div>\n\t\t\t</div>\n\t\t\t<div class="col-4">\n\t\t\t\t<div class="chart chart--formats"></div>\n\t\t\t</div>\n\t\t\t<div class="col-4">\n\t\t\t\t<div class="chart chart--year"></div>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class="row">\n\t\t\t<div class="col">\n\t\t\t\t<div class="table--collection"></div>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>';});
 
 define('app/views/collection',[
 	'underscore',
@@ -8391,7 +8423,7 @@ define('app/views/collection',[
 	'app/views/chart',
 	'app/views/table',
 	'text!app/templates/collection.html'
-], function(_, Marionette, EventBus, CollectionCollection, ChartView, CollectionTableView, collectionTpl) {
+], function(_, Marionette, EventBus, CollectionCollection, ChartView, TableView, collectionTpl) {
 
 	'use strict';
 
@@ -8405,7 +8437,7 @@ define('app/views/collection',[
 			artistsChart: '.chart--artists',
 			formatsChart: '.chart--formats',
 			yearChart: '.chart--year',
-			collectionTable: '.collection-table'
+			collectionTable: '.table--collection'
 		},
 
 		onRender: function() {
@@ -8427,7 +8459,7 @@ define('app/views/collection',[
 				'key': 'year'
 			}));
 
-			this.collectionTable.show(new CollectionTableView({
+			this.collectionTable.show(new TableView({
 				'collection': this.collection
 			}));
 
@@ -8489,7 +8521,7 @@ define('app/collections/wantlist',[
 	});
 });
 
-define('text!app/templates/wantlist.html',[],function () { return '<div class="panel">\n\t<div class="panel__header">\n\t\t<h1>Wantlist</h1>\n\t</div>\n\t<div class="panel__body">\n\t\t<div class="row">\n\t\t\t<div class="col-4">\n\t\t\t\t<div class="chart chart--artists"></div>\n\t\t\t</div>\n\t\t\t<div class="col-4">\n\t\t\t\t<div class="chart chart--year"></div>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>';});
+define('text!app/templates/wantlist.html',[],function () { return '<div class="panel">\n\t<div class="panel__header">\n\t\t<h1>Wantlist</h1>\n\t</div>\n\t<div class="panel__body">\n\t\t<div class="row">\n\t\t\t<div class="col-4">\n\t\t\t\t<div class="chart chart--artists"></div>\n\t\t\t</div>\n\t\t\t<div class="col-4">\n\t\t\t\t<div class="chart chart--year"></div>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class="row">\n\t\t\t<div class="col">\n\t\t\t\t<div class="table--wantlist"></div>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>';});
 
 define('app/views/wantlist',[
 	'underscore',
@@ -8497,8 +8529,9 @@ define('app/views/wantlist',[
 	'app/utils/eventbus',
 	'app/collections/wantlist',
 	'app/views/chart',
+	'app/views/table',
 	'text!app/templates/wantlist.html'
-], function(_, Marionette, EventBus, WantlistCollection, ChartView, wantlistTpl) {
+], function(_, Marionette, EventBus, WantlistCollection, ChartView, TableView, wantlistTpl) {
 
 	'use strict';
 
@@ -8511,7 +8544,8 @@ define('app/views/wantlist',[
 		regions: {
 			artistsChart: '.chart--artists',
 			formatsChart: '.chart--formats',
-			yearChart: '.chart--year'
+			yearChart: '.chart--year',
+			wantlistTable: '.table--wantlist'
 		},
 
 		onRender: function() {
@@ -8525,6 +8559,10 @@ define('app/views/wantlist',[
 				'collection': this.collection,
 				'type': 'pie',
 				'key': 'year'
+			}));
+
+			this.wantlistTable.show(new TableView({
+				'collection': this.collection
 			}));
 
 			if (this.collection.length) {

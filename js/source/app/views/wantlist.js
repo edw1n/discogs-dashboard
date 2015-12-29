@@ -4,8 +4,9 @@ define([
 	'app/utils/eventbus',
 	'app/collections/wantlist',
 	'app/views/chart',
+	'app/views/table',
 	'text!app/templates/wantlist.html'
-], function(_, Marionette, EventBus, WantlistCollection, ChartView, wantlistTpl) {
+], function(_, Marionette, EventBus, WantlistCollection, ChartView, TableView, wantlistTpl) {
 
 	'use strict';
 
@@ -18,7 +19,8 @@ define([
 		regions: {
 			artistsChart: '.chart--artists',
 			formatsChart: '.chart--formats',
-			yearChart: '.chart--year'
+			yearChart: '.chart--year',
+			wantlistTable: '.table--wantlist'
 		},
 
 		onRender: function() {
@@ -32,6 +34,10 @@ define([
 				'collection': this.collection,
 				'type': 'pie',
 				'key': 'year'
+			}));
+
+			this.wantlistTable.show(new TableView({
+				'collection': this.collection
 			}));
 
 			if (this.collection.length) {

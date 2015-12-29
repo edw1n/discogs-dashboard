@@ -26,14 +26,36 @@ define([
 		},
 
 		filter: function(model) {
-			var key;
-			if (!this.filterData) {
+			var filterData = this.filterData,
+				key;
+
+			if (!filterData) {
 				return;
 			}
 
-			key = (model.get(this.filterData.key)[0] && model.get(this.filterData.key)[0].name) || model.get(this.filterData.key);
+			// TODO: refactor this!
+			if (filterData.key === 'title') {
+				var data =  this.collection
+					.chain()
+					.filter(function(model) {
+						return model.get('artists')[0].name === filterData.value;
+					})
+					.uniq(function(model) {
+						return model.get('artists')[0].name + model.get('title');
+					})
+					.map(function(model) {
+						return model.get('id');
+					})
+					.value();
 
-			return key.toString() === this.filterData.value;
+				return _.find(data, function(id) {
+					return id === model.get('id');
+				});
+			}
+
+			key = (model.get(filterData.key)[0] && model.get(filterData.key)[0].name) || model.get(filterData.key);
+
+			return key.toString() === filterData.value;
 		}
 	});
 });
