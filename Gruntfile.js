@@ -2,7 +2,13 @@ module.exports = function(grunt) {
 
 	'use strict';
 
+	var paths = {
+		css: './css',
+		js: './js'
+	};
+
 	grunt.initConfig({
+		paths: paths,
 		pkg: grunt.file.readJSON('package.json'),
 		cssmin: {
 			target: {
@@ -11,30 +17,28 @@ module.exports = function(grunt) {
 				},
 				files: [{
 					expand: true,
-					cwd: './css',
+					cwd: '<%= paths.css %>',
 					src: ['*.css'],
-					dest: './css',
+					dest: '<%= paths.css %>',
 					ext: '.css'
 				}]
 			}
 		},
 		jshint: {
 			files: {
-				src: [
-					'./js/source/**/*.js'
-				]
+				src: ['<%= paths.js %>/source/**/*.js']
 			}
 		},
 		requirejs: {
 			compile: {
 				options: {
-					baseUrl: './js/source',
-					mainConfigFile: './js/source/main.js',
+					baseUrl: '<%= paths.js %>/source',
+					mainConfigFile: '<%= paths.js %>/source/main.js',
 					name: 'main',
 					findNestedDependencies: true,
 					optimize: 'none',
 					preserveLicenseComments: false,
-					out: './js/build/main.js',
+					out: '<%= paths.js %>/build/main.js',
 					paths: {
 						'jquery': 'empty:',
 						'highcharts': 'empty:'
@@ -45,24 +49,24 @@ module.exports = function(grunt) {
 		sass: {
 			files: {
 				expand: true,
-				cwd: './css/scss',
+				cwd: '<%= paths.css %>/scss',
 				src: ['**/*.scss'],
-				dest: './css',
+				dest: '<%= paths.css %>',
 				ext: '.css'
 			}
 		},
 		sasslint: {
 			options: {
-				configFile: './css/scss/.sass-lint.yml',
+				configFile: '<%= paths.css %>/scss/.sass-lint.yml',
 				files: {
-					ignore: ['./css/scss/vendor/**/*.*']
+					ignore: ['<%= paths.css %>/scss/vendor/**/*.*']
 				}
 			},
-			target: ['./css/scss/**/*.scss']
+			target: ['<%= paths.css %>/scss/**/*.scss']
 		},
 		watch: {
 			js: {
-				files:  './js/source/**/*.*',
+				files:  '<%= paths.js %>/source/**/*.*',
 				tasks: ['requirejs', 'jshint'],
 				options: {
 					livereload: true,
@@ -70,7 +74,7 @@ module.exports = function(grunt) {
 				}
 			},
 			css: {
-				files: './css/scss/**/*.scss',
+				files: '<%= paths.css %>/scss/**/*.scss',
 				tasks: ['sass', 'sasslint', 'cssmin'],
 				options: {
 					livereload: true,
