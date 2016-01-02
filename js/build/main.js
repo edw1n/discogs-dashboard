@@ -7411,6 +7411,7 @@ define('app/utils/eventbus',[
 
 	return _.extend({}, Backbone.Events, { cid: 'dispatcher' });
 });
+
 /**
  * @license RequireJS text 2.0.12 Copyright (c) 2010-2014, The Dojo Foundation All Rights Reserved.
  * Available via the MIT or new BSD license.
@@ -7809,7 +7810,7 @@ define('app/views/overview',[
 	'underscore',
 	'marionette',
 	'app/utils/eventbus',
-	'text!app/templates/overview.html',
+	'text!app/templates/overview.html'
 ], function(_, Marionette, EventBus, overviewTpl) {
 
 	'use strict';
@@ -7844,6 +7845,7 @@ define('app/views/overview',[
 		}
 	});
 });
+
 define('app/models/release',[
 	'underscore',
 	'backbone'
@@ -7880,6 +7882,7 @@ define('app/models/release',[
 		}
 	});
 });
+
 define('app/collections/base/releases',[
 	'underscore',
 	'backbone',
@@ -8027,7 +8030,7 @@ define('app/collections/collection',[
 			}
 
 			// Set total pages if not yet set
-			if(!this.totalPages) {
+			if (!this.totalPages) {
 				this.totalPages = response.pagination.pages;
 			}
 
@@ -8054,7 +8057,7 @@ define('app/collections/collection',[
 
 define('app/models/chart',[
 	'underscore',
-	'backbone',
+	'backbone'
 ], function(_, Backbone) {
 
 	'use strict';
@@ -8150,6 +8153,7 @@ define('app/models/chart',[
 	});
 });
 
+
 define('text!app/templates/loadMask.html',[],function () { return '<div class="load-mask"></div>';});
 
 define('app/views/loadMask',[
@@ -8201,7 +8205,7 @@ define('app/views/chart',[
 	'app/utils/eventbus',
 	'app/models/chart',
 	'app/views/loadMask',
-	'text!app/templates/chart.html',
+	'text!app/templates/chart.html'
 ], function(_, Marionette, Highcharts, EventBus, ChartModel, LoadMaskView, ChartTpl) {
 
 	'use strict';
@@ -8235,6 +8239,7 @@ define('app/views/chart',[
 
 					// TODO: make this better!!
 					window.setTimeout(_.bind(this.renderChart, this), 10);
+
 					//this.renderChart();
 				}
 			}
@@ -8258,6 +8263,7 @@ define('app/views/chart',[
 				chartType = this.options.type,
 				chartTitle = this.options.key,
 				chartData = this.model.get('data'),
+
 				//colors = this.getChartColors(),
 				collection = this.collection;
 
@@ -8276,6 +8282,7 @@ define('app/views/chart',[
 				legend: {
 					enabled: false
 				},
+
 				//colors: colors,
 				plotOptions: {
 					series: {
@@ -8292,14 +8299,15 @@ define('app/views/chart',[
 							events: {
 								click: function() {
 									var key = this.series.name,
-										value = this.name;
+										value = this.name,
+										data;
 
 									// Reset value when point is already selected
 									if (this.selected) {
 										value = null;
 									}
 
-									var data = {
+									data = {
 										'key': key,
 										'value': value
 									};
@@ -8314,6 +8322,7 @@ define('app/views/chart',[
 					formatter: function() {
 						return '<strong>' + this.key + '</strong>' + ': ' + this.y;
 					},
+
 					borderColor: 'none'
 				},
 				xAxis: {
@@ -8341,7 +8350,7 @@ define('app/views/tableItem',[
 	'underscore',
 	'marionette',
 	'app/utils/eventbus',
-	'text!app/templates/tableItem.html',
+	'text!app/templates/tableItem.html'
 ], function(_, Marionette, EventBus, tableItemTpl) {
 
 	'use strict';
@@ -8358,11 +8367,12 @@ define('app/views/tableItem',[
 		}
 	});
 });
+
 define('app/views/table',[
 	'underscore',
 	'marionette',
 	'app/utils/eventbus',
-	'app/views/tableItem'
+	'app/views/tableItem',
 ], function(_, Marionette, EventBus, tableItem) {
 
 	'use strict';
@@ -8387,7 +8397,8 @@ define('app/views/table',[
 
 		filter: function(model) {
 			var filterData = this.filterData,
-				key;
+				key,
+				data;
 
 			if (!filterData) {
 				return;
@@ -8395,7 +8406,7 @@ define('app/views/table',[
 
 			// TODO: refactor this!
 			if (filterData.key === 'title') {
-				var data =  this.collection
+				data =  this.collection
 					.chain()
 					.filter(function(model) {
 						return model.get('artists')[0].name === filterData.value;
@@ -8477,6 +8488,7 @@ define('app/views/collection',[
 		}
 	});
 });
+
 define('app/collections/wantlist',[
 	'underscore',
 	'backbone',
@@ -8504,7 +8516,7 @@ define('app/collections/wantlist',[
 			}
 
 			// Set total pages if not yet set
-			if(!this.totalPages) {
+			if (!this.totalPages) {
 				this.totalPages = response.pagination.pages;
 			}
 
@@ -8528,6 +8540,7 @@ define('app/collections/wantlist',[
 		}
 	});
 });
+
 
 define('text!app/templates/wantlist.html',[],function () { return '<div class="panel">\n\t<div class="panel__header">\n\t\t<h1>Wantlist</h1>\n\t</div>\n\t<div class="panel__body">\n\t\t<div class="row">\n\t\t\t<div class="col-4">\n\t\t\t\t<div class="chart chart--artists"></div>\n\t\t\t</div>\n\t\t\t<div class="col-4">\n\t\t\t\t<div class="chart chart--year"></div>\n\t\t\t</div>\n\t\t</div>\n\t\t<div class="row">\n\t\t\t<div class="col">\n\t\t\t\t<div class="table--wantlist"></div>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>';});
 
@@ -8580,6 +8593,7 @@ define('app/views/wantlist',[
 	});
 });
 
+
 define('text!app/templates/dashboard.html',[],function () { return '<div id="overview"></div>\n<div id="collection"></div>\n<div id="wantlist"></div>';});
 
 define('app/views/dashboard',[
@@ -8616,6 +8630,7 @@ define('app/views/dashboard',[
 		}
 	});
 });
+
 define('app/routers/router',[
 	'backbone',
 	'marionette'
@@ -8627,8 +8642,8 @@ define('app/routers/router',[
 
 		views: {},
 
-		routes : {
-			'' : 'dashboard'
+		routes: {
+			'': 'dashboard'
 		},
 
 		dashboard: function() {
@@ -8663,6 +8678,7 @@ define('app/app',[
 		}
 	});
 });
+
 require.config({
 	paths: {
 		underscore: '../../node_modules/underscore/underscore',
@@ -8670,7 +8686,7 @@ require.config({
 		marionette: '../../node_modules/backbone.marionette/lib/backbone.marionette',
 		text: '../../node_modules/requirejs-text/text',
 		jquery: ['../../node_modules/jquery/dist/jquery.min', '//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min'],
-		highcharts: ['../../node_modules/highcharts/highcharts', '//code.highcharts.com/highcharts'],
+		highcharts: ['../../node_modules/highcharts/highcharts', '//code.highcharts.com/highcharts']
 	},
 	shim: {
 		underscore: {

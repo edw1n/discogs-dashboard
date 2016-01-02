@@ -27,7 +27,8 @@ define([
 
 		filter: function(model) {
 			var filterData = this.filterData,
-				key;
+				key,
+				data;
 
 			if (!filterData) {
 				return;
@@ -35,7 +36,7 @@ define([
 
 			// TODO: refactor this!
 			if (filterData.key === 'title') {
-				var data =  this.collection
+				data =  this.collection
 					.chain()
 					.filter(function(model) {
 						return model.get('artists')[0].name === filterData.value;

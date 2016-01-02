@@ -24,6 +24,13 @@ module.exports = function(grunt) {
 				}]
 			}
 		},
+		jscs: {
+			src: ['<%= paths.js %>/source/**/*.js'],
+			options: {
+				config: '<%= paths.js %>/.jscsrc',
+				fix: true
+			}
+		},
 		jshint: {
 			files: {
 				src: ['<%= paths.js %>/source/**/*.js']
@@ -67,7 +74,7 @@ module.exports = function(grunt) {
 		watch: {
 			js: {
 				files:  '<%= paths.js %>/source/**/*.*',
-				tasks: ['requirejs', 'jshint'],
+				tasks: ['requirejs', 'jshint', 'jscs'],
 				options: {
 					livereload: true,
 					spawn: false

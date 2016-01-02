@@ -25,7 +25,7 @@ define([
 			}
 
 			// Set total pages if not yet set
-			if(!this.totalPages) {
+			if (!this.totalPages) {
 				this.totalPages = response.pagination.pages;
 			}
 

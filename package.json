@@ -9,6 +9,7 @@
     "grunt-contrib-requirejs": "^0.4.4",
     "grunt-contrib-uglify": "^0.10.0",
     "grunt-contrib-watch": "^0.6.1",
+    "grunt-jscs": "^2.5.0",
     "grunt-sass": "^1.1.0",
     "grunt-sass-lint": "0.1.0-beta.4",
     "load-grunt-tasks": "^3.3.0",

@@ -9,8 +9,8 @@ define([
 
 		views: {},
 
-		routes : {
-			'' : 'dashboard'
+		routes: {
+			'': 'dashboard'
 		},
 
 		dashboard: function() {
