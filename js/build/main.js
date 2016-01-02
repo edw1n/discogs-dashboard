@@ -8291,9 +8291,17 @@ define('app/views/chart',[
 						point: {
 							events: {
 								click: function() {
+									var key = this.series.name,
+										value = this.name;
+
+									// Reset value when point is already selected
+									if (this.selected) {
+										value = null;
+									}
+
 									var data = {
-										'key': this.series.name,
-										'value': this.name
+										'key': key,
+										'value': value
 									};
 
 									collection.trigger('filter', data);
@@ -8327,7 +8335,7 @@ define('app/views/chart',[
 });
 
 
-define('text!app/templates/tableItem.html',[],function () { return '<img class="release__image" src="<%= thumb %>" alt="">\n<h2 class="release__title"><%= title %></h2> <span class="release__year"></span>\n<h3 class="release__artist"><%= artists[0].name %></h3>\n<span class="release__year">\n\t<% if (year === 0) { %>\n\t\t&mdash;\n\t<% } else { %>\n\t\t<%= year %>\n\t<% } %>\n</span>';});
+define('text!app/templates/tableItem.html',[],function () { return '<img class="release__image" src="<%= thumb %>" alt="">\n<h2 class="release__title"><%= title %></h2> <span class="release__year">(<%= formats[0].descriptions[0] %>)</span>\n<h3 class="release__artist"><%= artists[0].name %></h3>\n<span class="release__year">\n\t<% if (year === 0) { %>\n\t\t&mdash;\n\t<% } else { %>\n\t\t<%= year %>\n\t<% } %>\n</span>';});
 
 define('app/views/tableItem',[
 	'underscore',
