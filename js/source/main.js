@@ -5,7 +5,7 @@ require.config({
 		marionette: '../../node_modules/backbone.marionette/lib/backbone.marionette',
 		text: '../../node_modules/requirejs-text/text',
 		jquery: ['../../node_modules/jquery/dist/jquery.min', '//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min'],
-		highcharts: ['../../node_modules/highcharts/highcharts', '//code.highcharts.com/highcharts'],
+		highcharts: ['../../node_modules/highcharts/highcharts', '//code.highcharts.com/highcharts']
 	},
 	shim: {
 		underscore: {

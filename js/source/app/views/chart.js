@@ -5,7 +5,7 @@ define([
 	'app/utils/eventbus',
 	'app/models/chart',
 	'app/views/loadMask',
-	'text!app/templates/chart.html',
+	'text!app/templates/chart.html'
 ], function(_, Marionette, Highcharts, EventBus, ChartModel, LoadMaskView, ChartTpl) {
 
 	'use strict';
@@ -37,7 +37,10 @@ define([
 				if (!_.isEqual(data, this.model.get('data'))) {
 					this.model.set('data', data);
 
-					this.renderChart();
+					// TODO: make this better!!
+					window.setTimeout(_.bind(this.renderChart, this), 10);
+
+					//this.renderChart();
 				}
 			}
 		},
@@ -60,6 +63,7 @@ define([
 				chartType = this.options.type,
 				chartTitle = this.options.key,
 				chartData = this.model.get('data'),
+
 				//colors = this.getChartColors(),
 				collection = this.collection;
 
@@ -78,6 +82,7 @@ define([
 				legend: {
 					enabled: false
 				},
+
 				//colors: colors,
 				plotOptions: {
 					series: {
@@ -93,9 +98,18 @@ define([
 						point: {
 							events: {
 								click: function() {
-									var data = {
-										'key': this.series.name,
-										'value': this.name
+									var key = this.series.name,
+										value = this.name,
+										data;
+
+									// Reset value when point is already selected
+									if (this.selected) {
+										value = null;
+									}
+
+									data = {
+										'key': key,
+										'value': value
 									};
 
 									collection.trigger('filter', data);
@@ -108,6 +122,7 @@ define([
 					formatter: function() {
 						return '<strong>' + this.key + '</strong>' + ': ' + this.y;
 					},
+
 					borderColor: 'none'
 				},
 				xAxis: {

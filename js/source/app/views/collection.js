@@ -6,7 +6,7 @@ define([
 	'app/views/chart',
 	'app/views/table',
 	'text!app/templates/collection.html'
-], function(_, Marionette, EventBus, CollectionCollection, ChartView, CollectionTableView, collectionTpl) {
+], function(_, Marionette, EventBus, CollectionCollection, ChartView, TableView, collectionTpl) {
 
 	'use strict';
 
@@ -20,7 +20,7 @@ define([
 			artistsChart: '.chart--artists',
 			formatsChart: '.chart--formats',
 			yearChart: '.chart--year',
-			collectionTable: '.collection-table'
+			collectionTable: '.table--collection'
 		},
 
 		onRender: function() {
@@ -42,7 +42,7 @@ define([
 				'key': 'year'
 			}));
 
-			this.collectionTable.show(new CollectionTableView({
+			this.collectionTable.show(new TableView({
 				'collection': this.collection
 			}));
 

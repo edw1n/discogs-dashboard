@@ -2,25 +2,50 @@ module.exports = function(grunt) {
 
 	'use strict';
 
+	var paths = {
+		css: './css',
+		js: './js'
+	};
+
 	grunt.initConfig({
+		paths: paths,
 		pkg: grunt.file.readJSON('package.json'),
+		cssmin: {
+			target: {
+				options: {
+					keepSpecialComments: 0
+				},
+				files: [{
+					expand: true,
+					cwd: '<%= paths.css %>',
+					src: ['*.css'],
+					dest: '<%= paths.css %>',
+					ext: '.css'
+				}]
+			}
+		},
+		jscs: {
+			src: ['<%= paths.js %>/source/**/*.js'],
+			options: {
+				config: '<%= paths.js %>/.jscsrc',
+				fix: true
+			}
+		},
 		jshint: {
 			files: {
-				src: [
-					'./js/source/**/*.js'
-				]
+				src: ['<%= paths.js %>/source/**/*.js']
 			}
 		},
 		requirejs: {
 			compile: {
 				options: {
-					baseUrl: './js/source',
-					mainConfigFile: './js/source/main.js',
+					baseUrl: '<%= paths.js %>/source',
+					mainConfigFile: '<%= paths.js %>/source/main.js',
 					name: 'main',
 					findNestedDependencies: true,
 					optimize: 'none',
 					preserveLicenseComments: false,
-					out: './js/build/main.js',
+					out: '<%= paths.js %>/build/main.js',
 					paths: {
 						'jquery': 'empty:',
 						'highcharts': 'empty:'
@@ -31,33 +56,33 @@ module.exports = function(grunt) {
 		sass: {
 			files: {
 				expand: true,
-				cwd: './css/scss',
+				cwd: '<%= paths.css %>/scss',
 				src: ['**/*.scss'],
-				dest: './css',
+				dest: '<%= paths.css %>',
 				ext: '.css'
 			}
 		},
 		sasslint: {
 			options: {
-				configFile: './css/scss/.sass-lint.yml',
+				configFile: '<%= paths.css %>/scss/.sass-lint.yml',
 				files: {
-					ignore: ['./css/scss/vendor/**/*.*']
+					ignore: ['<%= paths.css %>/scss/vendor/**/*.*']
 				}
 			},
-			target: ['./css/scss/**/*.scss']
+			target: ['<%= paths.css %>/scss/**/*.scss']
 		},
 		watch: {
 			js: {
-				files:  './js/source/**/*.js',
-				tasks: ['requirejs', 'jshint'],
+				files:  '<%= paths.js %>/source/**/*.*',
+				tasks: ['requirejs', 'jshint', 'jscs'],
 				options: {
 					livereload: true,
 					spawn: false
 				}
 			},
-			sass: {
-				files: './css/scss/**/*.scss',
-				tasks: ['sass', 'sasslint'],
+			css: {
+				files: '<%= paths.css %>/scss/**/*.scss',
+				tasks: ['sass', 'sasslint', 'cssmin'],
 				options: {
 					livereload: true,
 					spawn: false
@@ -73,5 +98,5 @@ module.exports = function(grunt) {
 	require('time-grunt')(grunt);
 
 	// Default task
-	grunt.registerTask('default', ['requirejs', 'sass']);
+	grunt.registerTask('default', ['requirejs', 'sass', 'cssmin']);
 };

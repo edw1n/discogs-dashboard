@@ -1,4 +1,10 @@
 <img class="release__image" src="<%= thumb %>" alt="">
 <h2 class="release__title"><%= title %></h2> <span class="release__year">(<%= formats[0].descriptions[0] %>)</span>
 <h3 class="release__artist"><%= artists[0].name %></h3>
-<span class="release__year"><%= year %></span>
+<span class="release__year">
+	<% if (year === 0) { %>
+		&mdash;
+	<% } else { %>
+		<%= year %>
+	<% } %>
+</span>

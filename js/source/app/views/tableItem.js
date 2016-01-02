@@ -2,7 +2,7 @@ define([
 	'underscore',
 	'marionette',
 	'app/utils/eventbus',
-	'text!app/templates/tableItem.html',
+	'text!app/templates/tableItem.html'
 ], function(_, Marionette, EventBus, tableItemTpl) {
 
 	'use strict';
