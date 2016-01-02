@@ -4,6 +4,20 @@ module.exports = function(grunt) {
 
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
+		cssmin: {
+			target: {
+				options: {
+					keepSpecialComments: 0
+				},
+				files: [{
+					expand: true,
+					cwd: './css',
+					src: ['*.css'],
+					dest: './css',
+					ext: '.css'
+				}]
+			}
+		},
 		jshint: {
 			files: {
 				src: [
@@ -55,9 +69,9 @@ module.exports = function(grunt) {
 					spawn: false
 				}
 			},
-			sass: {
+			css: {
 				files: './css/scss/**/*.scss',
-				tasks: ['sass', 'sasslint'],
+				tasks: ['sass', 'sasslint', 'cssmin'],
 				options: {
 					livereload: true,
 					spawn: false
@@ -73,5 +87,5 @@ module.exports = function(grunt) {
 	require('time-grunt')(grunt);
 
 	// Default task
-	grunt.registerTask('default', ['requirejs', 'sass']);
+	grunt.registerTask('default', ['requirejs', 'sass', 'cssmin']);
 };
