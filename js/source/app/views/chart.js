@@ -95,9 +95,17 @@ define([
 						point: {
 							events: {
 								click: function() {
+									var key = this.series.name,
+										value = this.name;
+
+									// Reset value when point is already selected
+									if (this.selected) {
+										value = null;
+									}
+
 									var data = {
-										'key': this.series.name,
-										'value': this.name
+										'key': key,
+										'value': value
 									};
 
 									collection.trigger('filter', data);
